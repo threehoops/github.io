@@ -7,7 +7,7 @@ window.SITE_CONFIG = {
         비워두면 '미리보기(데모) 모드'로 동작합니다.
         데모 모드에서는 글이 내 브라우저에만 임시 저장됩니다. */
   supabaseUrl: "https://spewnryvdafbvojksuyk.supabase.co",          // 예: "https://abcdefgh.supabase.co"
-  supabaseAnonKey: "4e9fe3e3-a9f0-4870-a916-5a4321f80bd6",      // 예: "eyJhbGciOi..." (anon public key)
+  supabaseAnonKey: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InNwZXducnl2ZGFmYnZvamtzdXlrIiwicm9sZSI6ImFub24iLCJpYXQiOjE3OTMxOTM5NzMsImV4cCI6MjEwODc2OTk3M30.A0N5cmuOmfJU1GNqvm6WO9A0JiTQkvf-xuUFNLwMAG8",      // 예: "eyJhbGciOi..." (anon public key)
   ownerEmail: "threehoops@gmail.com",   // 앨범 관리자 로그인 이메일
   storageBucket: "album",
 
