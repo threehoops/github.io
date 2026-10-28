@@ -163,9 +163,14 @@
       async signIn(email, password) { const r = await sb.auth.signInWithPassword({ email, password }); if (r.error) throw r.error; session = r.data.session; if (!isOwner()) { await sb.auth.signOut(); session = null; throw new Error("not owner"); } },
       async signOut() { await sb.auth.signOut(); session = null; },
       async listPosts() {
-        const rows = chk(await sb.from("posts").select("id,title,caption,taken_on,image_path,created_at,photo_likes(count),photo_comments(count)"));
+        const rows = chk(await sb.from("posts").select("id,title,caption,taken_on,image_path,created_at"));
+        const count = async (table) => {
+          try { const r = chk(await sb.from(table).select("post_id")); const m = {}; r.forEach((x) => (m[x.post_id] = (m[x.post_id] || 0) + 1)); return m; }
+          catch (e) { console.warn(table, e); return {}; }
+        };
+        const [likes, comments] = await Promise.all([count("photo_likes"), count("photo_comments")]);
         return rows.map((p) => ({ ...p, url: sb.storage.from(bucket).getPublicUrl(p.image_path).data.publicUrl,
-          like_count: p.photo_likes?.[0]?.count || 0, comment_count: p.photo_comments?.[0]?.count || 0 }));
+          like_count: likes[p.id] || 0, comment_count: comments[p.id] || 0 }));
       },
       async likedSet() { const rows = chk(await sb.from("photo_likes").select("post_id").eq("visitor_id", visitorId)); return new Set(rows.map((r) => r.post_id)); },
       async toggleLike(id) { return chk(await sb.rpc("toggle_like", { p_post: id, p_visitor: visitorId })); },
@@ -175,7 +180,8 @@
         const blob = await resizeImage(file);
         const path = `${data.taken_on.slice(0, 4)}/${uuid()}.jpg`;
         chk(await sb.storage.from(bucket).upload(path, blob, { contentType: "image/jpeg", cacheControl: "31536000" }));
-        chk(await sb.from("posts").insert({ ...fields, image_path: path }));
+        try { chk(await sb.from("posts").insert({ ...fields, image_path: path })); }
+        catch (e) { await sb.storage.from(bucket).remove([path]); throw e; }
       },
       async deletePost(id) {
         const row = chk(await sb.from("posts").select("image_path").eq("id", id).single());
@@ -256,10 +262,11 @@
   $("#demoBanner").addEventListener("click", (e) => { demoBannerClosed = true; e.currentTarget.hidden = true; });
 
   /* ---------------- Album ---------------- */
-  let posts = [], liked = new Set(), yearFilter = "all", sortDir = "desc", current = null;
+  let loadError = "", posts = [], liked = new Set(), yearFilter = "all", sortDir = "desc", current = null;
   async function loadAlbum() {
-    try { [posts, liked] = await Promise.all([api.listPosts(), api.likedSet()]); }
-    catch (e) { console.error(e); posts = []; }
+    loadError = "";
+    try { posts = await api.listPosts(); } catch (e) { console.error(e); posts = []; loadError = e?.message || String(e); }
+    try { liked = await api.likedSet(); } catch (e) { console.warn(e); liked = new Set(); }
     renderAlbum();
   }
   function renderAlbum() {
@@ -279,6 +286,7 @@
         </button>`).join("")}</div></div>`;
     }).join("");
     $("#albumEmpty").hidden = posts.length > 0;
+    $("#albumEmpty").textContent = loadError && api.isOwner() ? `${t("err_generic")} (${loadError})` : t("album_empty");
   }
   $("#yearChips").addEventListener("click", (e) => { const b = e.target.closest("[data-year]"); if (!b) return; yearFilter = b.dataset.year; renderAlbum(); });
   $$(".seg button").forEach((b) => b.addEventListener("click", () => { sortDir = b.dataset.sort; $$(".seg button").forEach((x) => x.classList.toggle("on", x === b)); renderAlbum(); }));
@@ -398,7 +406,7 @@
   $("#loginForm").addEventListener("submit", async (e) => {
     e.preventDefault(); const f = e.currentTarget;
     try { await api.signIn(f.elements.email.value.trim(), f.elements.password.value); closeModal($("#login")); toast(t("logged_in")); refreshAll(); }
-    catch (err) { console.error(err); msg(f, t("err_login")); }
+    catch (err) { console.error(err); msg(f, t("err_login") + (err && err.message ? " (" + err.message + ")" : "")); }
   });
 
   /* ---------------- Photo protection (deterrence) ---------------- */
