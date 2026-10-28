@@ -6,7 +6,7 @@ window.SITE_CONFIG = {
   /* 1) Supabase 연결 정보 (README 3단계 참고)
         비워두면 '미리보기(데모) 모드'로 동작합니다.
         데모 모드에서는 글이 내 브라우저에만 임시 저장됩니다. */
-  supabaseUrl: "https://abcdefgh.supabase.co",          // 예: "https://abcdefgh.supabase.co"
+  supabaseUrl: "https://spewnryvdafbvojksuyk.supabase.co",          // 예: "https://abcdefgh.supabase.co"
   supabaseAnonKey: "4e9fe3e3-a9f0-4870-a916-5a4321f80bd6",      // 예: "eyJhbGciOi..." (anon public key)
   ownerEmail: "threehoops@gmail.com",   // 앨범 관리자 로그인 이메일
   storageBucket: "album",
