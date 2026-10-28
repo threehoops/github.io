@@ -236,14 +236,15 @@
     setBg($("#heroPhoto"), C.heroImage); setBg($("#avatar"), C.profileImage);
     $("#introText").innerHTML = (L(C.intro) || []).map((p) => `<p>${esc(p)}</p>`).join("");
     $("#stats").innerHTML = (C.stats || []).map((s) => `<div class="stat"><b>${esc(s.value)}</b><span>${esc(L(s))}</span></div>`).join("");
-    $("#timeline").innerHTML = (C.career || []).map((c) => `<li><div class="t-period">${esc(c.period === "Present" && lang === "ko" ? "현재" : c.period)}</div><div class="t-org">${esc(c.org)}</div><div class="t-role">${esc(L(c))}</div></li>`).join("");
+    $("#timeline").innerHTML = (C.career || []).map((c) => `<li><div class="t-period">${esc(lang === "ko" ? c.period.replace("Present", "현재") : c.period)}</div><div class="t-org">${esc(c.org)}</div><div class="t-role">${esc(L(c))}</div></li>`).join("");
     $("#edu").innerHTML = (C.education || []).map((e) => `<li>${esc(L(e))}</li>`).join("");
     const links = Object.entries(C.links || {}).filter(([k, v]) => v && ICON[k]).map(([k, v]) => {
       const href = k === "email" ? "mailto:" + v : v;
       return `<a href="${esc(href)}" ${k === "email" ? "" : 'target="_blank" rel="noopener"'} aria-label="${LABEL[k]}" title="${LABEL[k]}">${ICON[k]}</a>`;
     }).join("");
     $("#heroSocials").innerHTML = links; $("#footSocials").innerHTML = links;
-    $("#year").textContent = new Date().getFullYear();
+    const y0 = Number(C.copyrightStart) || new Date().getFullYear(), y1 = new Date().getFullYear();
+    $("#year").textContent = y0 < y1 ? `${y0}–${y1}` : String(y1);
     $("#adminBtn").textContent = api.isOwner() ? t("logout") : t("admin");
     $("#vWm").textContent = C.watermark || "";
     document.body.classList.toggle("is-owner", api.isOwner());

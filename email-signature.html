@@ -23,34 +23,23 @@
     <li>Gmail → 오른쪽 위 톱니바퀴 → <b>모든 설정 보기</b> → <b>기본설정</b> 탭 → <b>서명</b> → <b>새로 만들기</b></li>
     <li>입력칸에 붙여넣기(Ctrl+V / ⌘V) → 아래 <b>서명 기본값</b>에서 새 메일·답장에 지정 → 맨 아래 <b>변경사항 저장</b></li>
   </ol>
-  <p class="note">홈페이지 주소: <code>https://threehoops.github.io</code></p>
-
+  
   <div class="box" id="sig">
 <!-- ===== SIGNATURE START ===== -->
 <table cellpadding="0" cellspacing="0" border="0" style="border-collapse:collapse;font-family:Arial,'Malgun Gothic','Apple SD Gothic Neo',sans-serif;color:#1d2230;">
   <tr>
-    <td style="border-left:3px solid #1f2f6b;padding:2px 0 2px 14px;vertical-align:top;">
-      <div style="font-size:16px;font-weight:bold;color:#1f2f6b;line-height:22px;">서준영 <span style="font-size:13px;font-weight:bold;color:#1d2230;letter-spacing:0.5px;">SEO JUNYOUNG</span></div>
-      <div style="font-size:12px;color:#4a5160;line-height:18px;">General Director &nbsp;|&nbsp; 법인장</div>
-      <div style="font-size:12px;line-height:18px;padding-top:6px;"><b style="color:#1d2230;">FUNEX TECH CO., LTD</b> <span style="color:#8a909c;">· LS ELECTRIC Authorized Distributor</span></div>
-      <div style="font-size:12px;color:#4a5160;line-height:18px;padding-top:4px;">
-        <span style="color:#1f2f6b;font-weight:bold;">M</span>&nbsp;<a href="tel:+84964166624" style="color:#4a5160;text-decoration:none;">+84 964 166 624</a>
-        &nbsp;&nbsp;<span style="color:#1f2f6b;font-weight:bold;">E</span>&nbsp;<a href="mailto:junyoung.seo@funex-tech.com" style="color:#4a5160;text-decoration:none;">junyoung.seo@funex-tech.com</a>
-        &nbsp;&nbsp;<span style="color:#1f2f6b;font-weight:bold;">W</span>&nbsp;<a href="https://funex-tech.com/" style="color:#4a5160;text-decoration:none;">funex-tech.com</a>
-      </div>
-      <div style="font-size:11px;color:#8a909c;line-height:16px;padding-top:4px;">
-        HCM: 14F Cobi Tower I, 5 Hoang Van Thai St., Tan My Ward, Ho Chi Minh City<br>
-        Hanoi: 16F Epic Tower, 19 Duy Tan St., Cau Giay Ward, Hanoi<br>
-        Malaysia: Level 24, Mercu Maybank, i-City Finance Ave., 40000 Shah Alam, Selangor
-      </div>
-      <div style="font-size:12px;line-height:18px;padding-top:8px;">
-        <a href="https://www.linkedin.com/in/jun-young-seo-a734a062" style="color:#2c47b5;text-decoration:none;font-weight:bold;">LinkedIn</a>
-        <span style="color:#c9ccd3;">&nbsp;|&nbsp;</span>
-        <a href="https://www.instagram.com/jun_young.seo" style="color:#2c47b5;text-decoration:none;font-weight:bold;">Instagram</a>
-        <span style="color:#c9ccd3;">&nbsp;|&nbsp;</span>
-        <a href="https://threehoops.github.io" style="color:#2c47b5;text-decoration:none;font-weight:bold;">Homepage</a>
-      </div>
+    <td style="border-left:2px solid #1f2f6b;padding:0 0 0 12px;vertical-align:top;">
+      <div style="font-size:14px;font-weight:bold;line-height:20px;color:#1d2230;">Jun-Young Seo (Jun) <span style="color:#c9ccd3;font-weight:normal;">|</span> 서준영</div>
+      <table cellpadding="0" cellspacing="0" border="0" style="border-collapse:collapse;margin-top:6px;font-size:12px;line-height:18px;">
+        <tr><td style="color:#8a909c;padding:0 12px 0 0;white-space:nowrap;">Mobile (KR)</td><td><a href="tel:+821027846884" style="color:#3a3f4b;text-decoration:none;">+82 10 2784 6884</a></td></tr>
+        <tr><td style="color:#8a909c;padding:0 12px 0 0;white-space:nowrap;">Mobile (VN)</td><td><a href="tel:+84964166624" style="color:#3a3f4b;text-decoration:none;">+84 96 416 6624</a></td></tr>
+        <tr><td style="color:#8a909c;padding:0 12px 0 0;white-space:nowrap;">Email</td><td><a href="mailto:threehoops@gmail.com" style="color:#3a3f4b;text-decoration:none;">threehoops@gmail.com</a></td></tr>
+        <tr><td style="color:#8a909c;padding:0 12px 0 0;white-space:nowrap;">KakaoTalk</td><td><span style="color:#3a3f4b;">threehoops</span></td></tr>
+      </table>
     </td>
+  </tr>
+  <tr>
+    <td style="padding:10px 0 0 0;font-size:10.5px;line-height:15px;color:#2e8b57;">*Please consider the environment before printing this e-mail</td>
   </tr>
 </table>
 <!-- ===== SIGNATURE END ===== -->
@@ -61,7 +50,7 @@
 </div>
 <script>
 document.getElementById('copy').addEventListener('click', async () => {
-  const el = document.querySelector('#sig table');
+  const el = document.querySelector('#sig > table');
   const done = document.getElementById('done');
   try {
     await navigator.clipboard.write([new ClipboardItem({
