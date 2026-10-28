@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Gmail Signature — Junyoung Seo</title>
+<style>
+  body{margin:0;background:#f4f5f7;font-family:-apple-system,BlinkMacSystemFont,"Apple SD Gothic Neo","Malgun Gothic",Arial,sans-serif;color:#1d2230}
+  .page{max-width:720px;margin:40px auto;padding:0 16px}
+  h1{font-size:20px;margin:0 0 6px}
+  ol{color:#4a5160;font-size:14px;line-height:1.8;padding-left:20px}
+  .box{background:#fff;border:1px solid #e3e5ea;border-radius:12px;padding:28px 24px;margin:18px 0}
+  button{background:#1f2f6b;color:#fff;border:0;border-radius:8px;padding:10px 18px;font-size:14px;font-weight:600;cursor:pointer}
+  .note{font-size:13px;color:#8a909c}
+  code{background:#eef0f4;padding:1px 6px;border-radius:4px}
+</style>
+</head>
+<body>
+<div class="page">
+  <h1>Gmail 서명</h1>
+  <ol>
+    <li>아래 <b>서명 복사</b>를 누릅니다. 버튼이 안 되면 서명 영역을 마우스로 드래그해 복사하세요.</li>
+    <li>Gmail → 오른쪽 위 톱니바퀴 → <b>모든 설정 보기</b> → <b>기본설정</b> 탭 → <b>서명</b> → <b>새로 만들기</b></li>
+    <li>입력칸에 붙여넣기(Ctrl+V / ⌘V) → 아래 <b>서명 기본값</b>에서 새 메일·답장에 지정 → 맨 아래 <b>변경사항 저장</b></li>
+  </ol>
+  <p class="note">홈페이지 주소: <code>https://threehoops.github.io</code></p>
+
+  <div class="box" id="sig">
+<!-- ===== SIGNATURE START ===== -->
+<table cellpadding="0" cellspacing="0" border="0" style="border-collapse:collapse;font-family:Arial,'Malgun Gothic','Apple SD Gothic Neo',sans-serif;color:#1d2230;">
+  <tr>
+    <td style="border-left:3px solid #1f2f6b;padding:2px 0 2px 14px;vertical-align:top;">
+      <div style="font-size:16px;font-weight:bold;color:#1f2f6b;line-height:22px;">서준영 <span style="font-size:13px;font-weight:bold;color:#1d2230;letter-spacing:0.5px;">SEO JUNYOUNG</span></div>
+      <div style="font-size:12px;color:#4a5160;line-height:18px;">General Director &nbsp;|&nbsp; 법인장</div>
+      <div style="font-size:12px;line-height:18px;padding-top:6px;"><b style="color:#1d2230;">FUNEX TECH CO., LTD</b> <span style="color:#8a909c;">· LS ELECTRIC Authorized Distributor</span></div>
+      <div style="font-size:12px;color:#4a5160;line-height:18px;padding-top:4px;">
+        <span style="color:#1f2f6b;font-weight:bold;">M</span>&nbsp;<a href="tel:+84964166624" style="color:#4a5160;text-decoration:none;">+84 964 166 624</a>
+        &nbsp;&nbsp;<span style="color:#1f2f6b;font-weight:bold;">E</span>&nbsp;<a href="mailto:junyoung.seo@funex-tech.com" style="color:#4a5160;text-decoration:none;">junyoung.seo@funex-tech.com</a>
+        &nbsp;&nbsp;<span style="color:#1f2f6b;font-weight:bold;">W</span>&nbsp;<a href="https://funex-tech.com/" style="color:#4a5160;text-decoration:none;">funex-tech.com</a>
+      </div>
+      <div style="font-size:11px;color:#8a909c;line-height:16px;padding-top:4px;">
+        HCM: 14F Cobi Tower I, 5 Hoang Van Thai St., Tan My Ward, Ho Chi Minh City<br>
+        Hanoi: 16F Epic Tower, 19 Duy Tan St., Cau Giay Ward, Hanoi<br>
+        Malaysia: Level 24, Mercu Maybank, i-City Finance Ave., 40000 Shah Alam, Selangor
+      </div>
+      <div style="font-size:12px;line-height:18px;padding-top:8px;">
+        <a href="https://www.linkedin.com/in/jun-young-seo-a734a062" style="color:#2c47b5;text-decoration:none;font-weight:bold;">LinkedIn</a>
+        <span style="color:#c9ccd3;">&nbsp;|&nbsp;</span>
+        <a href="https://www.instagram.com/jun_young.seo" style="color:#2c47b5;text-decoration:none;font-weight:bold;">Instagram</a>
+        <span style="color:#c9ccd3;">&nbsp;|&nbsp;</span>
+        <a href="https://threehoops.github.io" style="color:#2c47b5;text-decoration:none;font-weight:bold;">Homepage</a>
+      </div>
+    </td>
+  </tr>
+</table>
+<!-- ===== SIGNATURE END ===== -->
+  </div>
+
+  <button id="copy" type="button">서명 복사</button>
+  <span class="note" id="done"></span>
+</div>
+<script>
+document.getElementById('copy').addEventListener('click', async () => {
+  const el = document.querySelector('#sig table');
+  const done = document.getElementById('done');
+  try {
+    await navigator.clipboard.write([new ClipboardItem({
+      'text/html': new Blob([el.outerHTML], {type: 'text/html'}),
+      'text/plain': new Blob([el.innerText], {type: 'text/plain'})
+    })]);
+    done.textContent = '  복사됨 — Gmail 서명 칸에 붙여넣으세요.';
+  } catch (e) {
+    const r = document.createRange(); r.selectNode(el);
+    const s = getSelection(); s.removeAllRanges(); s.addRange(r);
+    document.execCommand('copy'); s.removeAllRanges();
+    done.textContent = '  복사됨 (또는 직접 드래그해서 복사하세요)';
+  }
+});
+</script>
+</body>
+</html>

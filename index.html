@@ -1,0 +1,208 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>서준영 | Junyoung Seo</title>
+  <meta name="description" content="서준영(Junyoung Seo) 개인 홈페이지 — 소개, 경력, 앨범, 방명록">
+  <meta property="og:title" content="서준영 | Junyoung Seo">
+  <meta property="og:description" content="General Director, FUNEX TECH — LS ELECTRIC Authorized Distributor">
+  <meta property="og:image" content="https://threehoops.github.io/images/hero.jpg">
+  <meta property="og:url" content="https://threehoops.github.io/">
+  <link rel="canonical" href="https://threehoops.github.io/">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%231f2f6b'/%3E%3Ctext x='32' y='42' font-family='Arial' font-weight='700' font-size='26' fill='white' text-anchor='middle'%3EJS%3C/text%3E%3C/svg%3E">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
+  <link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+
+<header class="nav" id="top">
+  <div class="wrap nav-inner">
+    <a href="#top" class="brand"><span class="brand-mark">JS</span><span data-c="name"></span></a>
+    <nav class="nav-links">
+      <a href="#about" data-i18n="nav_about"></a>
+      <a href="#career" data-i18n="nav_career"></a>
+      <a href="#album" data-i18n="nav_album"></a>
+      <a href="#guestbook" data-i18n="nav_guestbook"></a>
+    </nav>
+    <button class="lang" id="langBtn" type="button" aria-label="Language">EN</button>
+  </div>
+</header>
+
+<main>
+  <!-- HERO -->
+  <section class="hero wrap">
+    <div class="hero-text">
+      <p class="eyebrow"><span data-c="role"></span> · <span data-c="companyShort">FUNEX TECH</span></p>
+      <h1><span class="name-ko">서준영</span><span class="name-en">Junyoung Seo</span></h1>
+      <p class="tagline" data-c="tagline"></p>
+      <div class="socials" id="heroSocials"></div>
+      <div class="hero-cta">
+        <a href="#album" class="btn btn-primary" data-i18n="cta_album"></a>
+        <a href="#guestbook" class="btn btn-ghost" data-i18n="cta_guestbook"></a>
+      </div>
+    </div>
+    <figure class="hero-photo protected" id="heroPhoto" aria-label="Profile photo"></figure>
+  </section>
+
+  <!-- ABOUT -->
+  <section class="section" id="about">
+    <div class="wrap about">
+      <div class="about-side">
+        <div class="avatar protected" id="avatar"></div>
+        <p class="about-name" data-c="name"></p>
+        <p class="muted small" data-c="company"></p>
+        <p class="muted small" data-c="location"></p>
+      </div>
+      <div class="about-body">
+        <h2 class="section-title" data-i18n="about_title"></h2>
+        <div id="introText" class="intro"></div>
+        <div class="stats" id="stats"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CAREER -->
+  <section class="section alt" id="career">
+    <div class="wrap">
+      <h2 class="section-title" data-i18n="career_title"></h2>
+      <ol class="timeline" id="timeline"></ol>
+      <h3 class="sub-title" data-i18n="edu_title"></h3>
+      <ul class="edu" id="edu"></ul>
+    </div>
+  </section>
+
+  <!-- ALBUM -->
+  <section class="section" id="album">
+    <div class="wrap">
+      <div class="section-head">
+        <div>
+          <h2 class="section-title" data-i18n="album_title"></h2>
+          <p class="muted" data-i18n="album_desc"></p>
+        </div>
+        <button class="btn btn-primary owner-only" id="newPostBtn" type="button" data-i18n="album_new"></button>
+      </div>
+      <div class="album-tools">
+        <div class="chips" id="yearChips"></div>
+        <div class="seg" role="group" aria-label="sort">
+          <button type="button" data-sort="desc" class="on" data-i18n="sort_new"></button>
+          <button type="button" data-sort="asc" data-i18n="sort_old"></button>
+        </div>
+      </div>
+      <div id="albumGroups"></div>
+      <p class="empty muted" id="albumEmpty" hidden data-i18n="album_empty"></p>
+    </div>
+  </section>
+
+  <!-- GUESTBOOK -->
+  <section class="section alt" id="guestbook">
+    <div class="wrap gb">
+      <div>
+        <h2 class="section-title" data-i18n="gb_title"></h2>
+        <p class="muted" data-i18n="gb_desc"></p>
+        <form class="card form" id="gbForm" novalidate>
+          <div class="row2">
+            <label><span><span data-i18n="f_name"></span> *</span><input name="name" maxlength="40" required autocomplete="name"></label>
+            <label><span><span data-i18n="f_email"></span> *</span><input name="email" type="email" maxlength="120" required autocomplete="email"></label>
+          </div>
+          <label><span><span data-i18n="f_message"></span> *</span><textarea name="message" rows="4" maxlength="1000" required></textarea></label>
+          <input class="hp" name="website" tabindex="-1" autocomplete="off" aria-hidden="true">
+          <div class="form-foot">
+            <span class="muted small" data-i18n="f_email_note"></span>
+            <button class="btn btn-primary" type="submit" data-i18n="f_submit"></button>
+          </div>
+          <p class="form-msg" role="status"></p>
+        </form>
+      </div>
+      <ul class="gb-list" id="gbList"></ul>
+    </div>
+  </section>
+</main>
+
+<footer class="footer">
+  <div class="wrap footer-inner">
+    <div>
+      <p class="brand-foot" data-c="name"></p>
+      <p class="muted small">© <span id="year"></span> Junyoung Seo. <span data-i18n="rights"></span></p>
+    </div>
+    <div class="socials small-icons" id="footSocials"></div>
+    <button class="link-btn small" id="adminBtn" type="button" data-i18n="admin"></button>
+  </div>
+</footer>
+
+<!-- Photo viewer -->
+<div class="modal" id="viewer" hidden>
+  <div class="modal-backdrop" data-close></div>
+  <div class="viewer-box" role="dialog" aria-modal="true">
+    <button class="icon-btn close" data-close aria-label="Close">✕</button>
+    <div class="viewer-photo protected" id="vPhoto"><span class="wm" id="vWm"></span></div>
+    <div class="viewer-side">
+      <p class="muted small" id="vDate"></p>
+      <h3 id="vTitle"></h3>
+      <p id="vCaption" class="v-caption"></p>
+      <div class="v-actions">
+        <button class="like-btn" id="vLike" type="button"><span class="heart">♡</span> <span id="vLikeCount">0</span></button>
+        <span class="owner-only v-owner">
+          <button class="link-btn" id="vEdit" type="button" data-i18n="edit"></button>
+          <button class="link-btn danger" id="vDelete" type="button" data-i18n="delete"></button>
+        </span>
+      </div>
+      <h4 class="v-ctitle"><span data-i18n="comments"></span> <span id="vCommentCount" class="muted"></span></h4>
+      <ul class="comments" id="vComments"></ul>
+      <form class="form compact" id="cForm" novalidate>
+        <div class="row2">
+          <input name="name" maxlength="40" required data-ph="f_name" autocomplete="name">
+          <input name="email" type="email" maxlength="120" required data-ph="f_email" autocomplete="email">
+        </div>
+        <textarea name="body" rows="2" maxlength="1000" required data-ph="f_comment"></textarea>
+        <input class="hp" name="website" tabindex="-1" autocomplete="off" aria-hidden="true">
+        <div class="form-foot">
+          <span class="muted small" data-i18n="f_email_note"></span>
+          <button class="btn btn-primary btn-sm" type="submit" data-i18n="f_post"></button>
+        </div>
+        <p class="form-msg" role="status"></p>
+      </form>
+    </div>
+  </div>
+</div>
+
+<!-- Upload / edit (owner) -->
+<div class="modal" id="editor" hidden>
+  <div class="modal-backdrop" data-close></div>
+  <form class="card dialog form" id="postForm" role="dialog" aria-modal="true" novalidate>
+    <button class="icon-btn close" type="button" data-close aria-label="Close">✕</button>
+    <h3 id="editorTitle" data-i18n="album_new"></h3>
+    <label class="drop" id="dropZone">
+      <input type="file" name="file" accept="image/*" hidden>
+      <span id="dropText" data-i18n="f_pick"></span>
+      <img id="preview" alt="" hidden>
+    </label>
+    <label><span data-i18n="f_title"></span><input name="title" maxlength="80"></label>
+    <label><span><span data-i18n="f_date"></span> *</span><input name="taken_on" type="date" required></label>
+    <label><span data-i18n="f_caption"></span><textarea name="caption" rows="3" maxlength="1000"></textarea></label>
+    <div class="form-foot"><span></span><button class="btn btn-primary" type="submit" data-i18n="f_save"></button></div>
+    <p class="form-msg" role="status"></p>
+  </form>
+</div>
+
+<!-- Admin login -->
+<div class="modal" id="login" hidden>
+  <div class="modal-backdrop" data-close></div>
+  <form class="card dialog form" id="loginForm" role="dialog" aria-modal="true" novalidate>
+    <button class="icon-btn close" type="button" data-close aria-label="Close">✕</button>
+    <h3 data-i18n="admin_login"></h3>
+    <label><span data-i18n="f_email"></span><input name="email" type="email" autocomplete="username"></label>
+    <label><span data-i18n="f_password"></span><input name="password" type="password" autocomplete="current-password"></label>
+    <p class="muted small demo-only" data-i18n="demo_pw"></p>
+    <div class="form-foot"><span></span><button class="btn btn-primary" type="submit" data-i18n="login"></button></div>
+    <p class="form-msg" role="status"></p>
+  </form>
+</div>
+
+<div class="toast" id="toast" hidden></div>
+<div class="demo-banner" id="demoBanner" hidden data-i18n="demo_banner"></div>
+
+<script src="config.js"></script>
+<script src="assets/app.js"></script>
+</body>
+</html>
