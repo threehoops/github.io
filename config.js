@@ -35,13 +35,13 @@ window.SITE_CONFIG = {
   intro: {
     ko: [
       "안녕하세요, 서준영입니다. 2008년 슈나이더 일렉트릭에서 시작해 17년 넘게 전기·전력 분야의 영업과 사업개발을 해왔습니다.",
-      "한국에서는 OEM 영업팀장으로 BESS·로봇·DC 보호 등 신규 오퍼를 시장에 안착시켰고, 베트남에서는 약 100개 한국계 FDI 핵심 고객사의 사업개발을 맡았습니다.",
+      "한국에서는 저압 제품군 마케팅 담당자 및 OEM 영업팀장으로 BESS·로봇·DC 보호 등 신규 오퍼를 시장에 안착시켰고, 베트남에서는 약 100개 한국계 FDI 핵심 고객사의 사업개발을 맡았습니다.",
       "지금은 LS일렉트릭 공식 대리점 퓨넥스테크와 칠러·공조 솔루션 기업 한에너지솔루션(HES)의 법인장으로, 베트남과 말레이시아에서 수변전·배전 설비와 칠러·HVAC 프로젝트를 이끌고 있습니다.",
       "특히 데이터센터의 전력·공조 설비부터 DCIM, BMS까지 전력과 냉각, 운영 관리를 하나로 잇는 솔루션에 집중하고 있습니다."
     ],
     en: [
       "Hi, I'm Junyoung Seo. Since joining Schneider Electric in 2008, I have spent 17+ years in sales and business development across the electrical power industry.",
-      "In Korea I led the OEM sales team and launched new offers such as BESS, robotics and DC protection; in Vietnam I developed around 100 Korean FDI key accounts.",
+      "In Korea I led the Low volage offer maketer & OEM sales team and launched new offers such as BESS, robotics and DC protection; in Vietnam I developed around 100 Korean FDI key accounts.",
       "Today I serve as General Director of FUNEX TECH, an LS ELECTRIC authorized distributor, and HanEnergy Solutions (HES), a chiller and HVAC solutions company, leading power distribution and cooling projects in Vietnam and Malaysia.",
       "My focus is data center infrastructure: power and cooling systems, DCIM and BMS, connecting energy, cooling and operations into one solution."
     ]
